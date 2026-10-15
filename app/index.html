@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metronome</title>
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="base.css">
+<style>
+  .bpm{font-size:clamp(3.5rem,18vw,5.5rem);font-weight:800;font-variant-numeric:tabular-nums;line-height:1;margin:.75rem 0 .25rem}
+  .bpm small{font-size:.3em;color:var(--muted);font-weight:600}
+  input[type=range]{width:100%;max-width:26rem}
+  .dots{display:flex;gap:.5rem;margin:1.25rem 0}
+  .dot{width:1.4rem;height:1.4rem;border-radius:50%;background:var(--line)}
+  .dot.on{background:var(--good)}.dot.accent.on{background:var(--accent)}
+  .controls button{min-width:5.5rem;padding:.6rem 1rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>Metronome</h1>
+  <p class="sub">Set a tempo and press Start. The first beat of each bar is accented.</p>
+  <p class="bpm" id="bpm">100 <small>BPM</small></p>
+  <input type="range" id="tempo" min="30" max="260" value="100" aria-label="Tempo">
+  <div class="row" style="margin-top:.5rem">
+    <button id="minus" aria-label="Slower">−</button><button id="plus" aria-label="Faster">+</button>
+    <label for="beats">Beats per bar</label>
+    <select id="beats"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option></select>
+    <button id="tap">Tap tempo</button>
+  </div>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+  <div class="row controls"><button id="go" class="primary">Start</button></div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
